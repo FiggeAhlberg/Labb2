@@ -24,80 +24,275 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="3" Grid.Row="1">
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0">Books</Label>
+            <ListView
+                Name="EditBooksListView"
+                Grid.Row="1"
+                Grid.Column="1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Isbn13}" Header="ISBN" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Title" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Price}" Header="Price" />
+                        <GridViewColumn DisplayMemberBinding="{Binding ReleaseDate}" Header="ReleaseDate" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Language}" Header="Language" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0">Authors</Label>
+            <ListView
+                Name="EditAuthorListView"
+                Grid.Row="3"
+                Grid.Column="1"
+                SelectionChanged="EditAuthorListView_OnSelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Header="FirstName" />
+                        <GridViewColumn DisplayMemberBinding="{Binding LastName}" Header="LastName" />
+                        <GridViewColumn DisplayMemberBinding="{Binding BirthDate}" Header="BirthDate" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+
+
+        <Grid Grid.Row="1" Grid.Column="3">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"></ColumnDefinition>
-                <ColumnDefinition Width="*" ></ColumnDefinition>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                
-                
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+
+
             </Grid.RowDefinitions>
 
 
-            <Label Grid.Row="0" Grid.Column="0" Content="ISBN13" FontSize="11" VerticalAlignment="Top" VerticalContentAlignment="Top"></Label>
-            <Label Grid.Row="1" Grid.Column="0" Content="Title" FontSize="11" VerticalAlignment="Top" VerticalContentAlignment="Top"></Label>
-            <Label Grid.Row="2" Grid.Column="0" Content="Language" FontSize="11" VerticalAlignment="Top" VerticalContentAlignment="Top"></Label>
-            <Label Grid.Row="3" Grid.Column="0" Content="Price" FontSize="11" VerticalAlignment="Top" VerticalContentAlignment="Top"></Label>
-            <Label Grid.Row="4" Grid.Column="0" Content="ReleaseDate" FontSize="11" VerticalAlignment="Top" VerticalContentAlignment="Top"></Label>
-            <Label Grid.Row="5" Grid.Column="0" Content="Hej" FontSize="11" VerticalAlignment="Top" VerticalContentAlignment="Top"></Label>
-            <Label Grid.Row="6" Grid.Column="0" Content="Hej" FontSize="11" VerticalAlignment="Top" VerticalContentAlignment="Top"></Label>
-            <Label Grid.Row="7" Grid.Column="0" Content="Hej" FontSize="11" VerticalAlignment="Top" VerticalContentAlignment="Top"></Label>
-            
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                VerticalAlignment="Top"
+                VerticalContentAlignment="Top"
+                Content="ISBN13"
+                FontSize="11" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                VerticalAlignment="Top"
+                VerticalContentAlignment="Top"
+                Content="Title"
+                FontSize="11" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                VerticalAlignment="Top"
+                VerticalContentAlignment="Top"
+                Content="Language"
+                FontSize="11" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                VerticalAlignment="Top"
+                VerticalContentAlignment="Top"
+                Content="Price"
+                FontSize="11" />
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                VerticalAlignment="Top"
+                VerticalContentAlignment="Top"
+                Content="ReleaseDate"
+                FontSize="11" />
+            <Label
+                Grid.Row="5"
+                Grid.Column="0"
+                VerticalAlignment="Top"
+                VerticalContentAlignment="Top"
+                Content="Publisher"
+                FontSize="11" />
+            <Label
+                Grid.Row="6"
+                Grid.Column="0"
+                VerticalAlignment="Top"
+                VerticalContentAlignment="Top"
+                Content="Author"
+                FontSize="11" />
 
-            <TextBox Grid.Column="1"  Grid.Row="0" />
-            <TextBox Grid.Column="1"  Grid.Row="1" />
-            <TextBox Grid.Column="1"  Grid.Row="2"/>
-            <TextBox Grid.Column="1"  Grid.Row="3"/>
-            <TextBox Grid.Column="1"  Grid.Row="4"/>
-            <TextBox Grid.Column="1"  Grid.Row="5"/>
-            <TextBox Grid.Column="1"  Grid.Row="6"/>
-            <ComboBox Grid.Column="1"  Grid.Row="7"/>
 
+            <TextBox
+                Name="BookIdTbx"
+                Grid.Row="0"
+                Grid.Column="1" />
+            <TextBox
+                Name="BookTitleTbx"
+                Grid.Row="1"
+                Grid.Column="1" />
+            <TextBox
+                Name="BookLanguageTbx"
+                Grid.Row="2"
+                Grid.Column="1" />
+            <TextBox
+                Name="BookPriceTbx"
+                Grid.Row="3"
+                Grid.Column="1" />
+            <DatePicker
+                Name="BookReleaseDate"
+                Grid.Row="4"
+                Grid.Column="1" />
+            <ComboBox
+                Name="PublisherCmb"
+                Grid.Row="5"
+                Grid.Column="1" 
+                DisplayMemberPath="Name"/>
+            <ListView
+                Name="AuthorListView"
+                Grid.Row="6"
+                Grid.RowSpan="2"
+                Grid.Column="1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Header="FirstName" />
+                        <GridViewColumn DisplayMemberBinding="{Binding LastName}" Header="LastName" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
 
         </Grid>
 
-        <Button Grid.Row="3" Grid.Column="3" Height="15" Width="80" HorizontalAlignment="Left"  VerticalAlignment="Top" Content="Add" FontSize="9"></Button>
-        <Button Grid.Row="3" Grid.Column="3" Height="15" Width="80" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Add" FontSize="9"></Button>
-        <Button Grid.Row="3" Grid.Column="3" Height="15" Width="80" HorizontalAlignment="Right" VerticalAlignment="Top" Content="Remove" FontSize="9"></Button>
+        <Button
+            Name="AddStockBookBtn"
+            Grid.Row="3"
+            Grid.Column="3"
+            Width="100"
+            Height="20"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="AddStockBookBtn_OnClick"
+            Content="Add"
+            FontSize="9" />
+        <Button
+            Name="UpdateBookBtn"
+            Grid.Row="3"
+            Grid.Column="3"
+            Width="100"
+            Height="20"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Update"
+            FontSize="9" 
+            Click="UpdateBookBtn_OnClick"/>
+        <Button
+            Grid.Row="3"
+            Grid.Column="3"
+            Width="100"
+            Height="20"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Content="Remove"
+            FontSize="9" />
 
-        <Grid Grid.Column="3" Grid.Row="3">
+        <Grid Grid.Row="3" Grid.Column="3">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"></ColumnDefinition>
-                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
-            <TextBox Grid.Column="1" Grid.Row="2" />
-            <TextBox  Grid.Column="1" Grid.Row="3"/>
-            <ComboBox Grid.Column="1" Grid.Row="4" />
+            <TextBox
+                Name="AuthorIdTbx"
+                Grid.Row="2"
+                Grid.Column="1" />
+            <TextBox
+                Name="AuthorFirstNameTbx"
+                Grid.Row="3"
+                Grid.Column="1" />
+            <TextBox
+                Name="AuthorLastNameTbx"
+                Grid.Row="4"
+                Grid.Column="1" />
+            <DatePicker
+                Name="AuthorBirthDate"
+                Grid.Row="5"
+                Grid.Column="1" />
 
         </Grid>
 
-        <Button Grid.Row="3" Grid.Column="3" Height="15" Width="80" HorizontalAlignment="Left" VerticalAlignment="Bottom" ></Button>
-        <Button Grid.Row="3" Grid.Column="3" Height="15" Width="80" HorizontalAlignment="Center" VerticalAlignment="Bottom" ></Button>
-        <Button Grid.Row="3" Grid.Column="3" Height="15" Width="80" HorizontalAlignment="Right" VerticalAlignment="Bottom" ></Button>
+        <Button
+            Name="AuthorToBookBtn"
+            Grid.Row="3"
+            Grid.Column="3"
+            Width="80"
+            Height="20"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Click="AuthorToBookBtn_OnClick"
+            Content="Author to Book"
+            FontSize="10" />
+        <Button
+            Name="AddAuthorBtn"
+            Grid.Row="3"
+            Grid.Column="3"
+            Width="100"
+            Height="20"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Click="AddAuthorBtn_OnClick">
+            Add
+        </Button>
+        <Button
+            Name ="UpdateAuthorBtn"
+            Grid.Row="3"
+            Grid.Column="3"
+            Width="100"
+            Height="20"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Click="UpdateAuthorBtn_OnClick">
+            Update
+        </Button>
+        <Button
+            Grid.Row="3"
+            Grid.Column="3"
+            Width="100"
+            Height="20"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom">
+            Remove
+        </Button>
 
-        <ListView Grid.Row="1" Grid.Column="1" />
-        <ListView Grid.Row="3" Grid.Column="1" />
+
 
 
 

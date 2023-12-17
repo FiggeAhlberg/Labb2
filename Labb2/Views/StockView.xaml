@@ -26,59 +26,99 @@
         <Grid
             Grid.Row="0"
             Grid.Column="1"
-            Margin="10">
+            Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label
                 Grid.Row="0"
-                Margin="2,2"
                 HorizontalAlignment="Center"
                 Content="Akademi Bokhandeln" />
-            <ListView Name="Store1ListView" Grid.Row="1" />
+            <ListView Name="Store1ListView" Grid.Row="1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Isbn13Navigation.Title}" Header="Title" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Balance}" Header="Balance">
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
 
-        <Grid
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="10">
+        <!--<GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}" />-->
+        <!--  Add more columns for other properties if needed  -->
+
+
+        <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
+
             <Label
                 Grid.Row="0"
-                Margin="2,2"
-                HorizontalAlignment="Center"
-                Content="Science-Fiction Bokhandeln" />
-            <ListView Name="Store2ListView" Grid.Row="1" />
+                HorizontalContentAlignment="Center"
+                Content="Books" />
+            <ListView
+                Name="BookListView"
+                Grid.Row="1"
+                
+                SelectionChanged="BookListView_OnSelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}">
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
 
-        <Grid
+        <Grid Grid.Row="2" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+           
+            <StackPanel Grid.Column="0">
+                <Label Margin="140,30,10,5">Store</Label>
+                <Label Margin="140, 0, 0, 0">Quantity</Label>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="2"
+                Grid.Column="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <ComboBox
+                    Name="StoreCmb"
+                    Width="140"
+                    Height="30"
+                    DisplayMemberPath="StoreName"
+                    SelectionChanged="StoreCmb_OnSelectionChanged"/>
+                <TextBox
+                    Name="NumberOfBooksTbx"
+                    Width="140"
+                    Height="30"
+                />
+                <Button
+                    Name="AddBookBtn"
+                    Width="140"
+                    Height="30"
+                    Content="Add" 
+                    Click="AddBookBtn_OnClick"/>
+            </StackPanel>
+        </Grid>
+        
+
+        <Button
+            Name="RemoveBookBtn"
             Grid.Row="2"
             Grid.Column="1"
-            Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Label
-                Grid.Row="0"
-                Margin="2,2"
-                HorizontalAlignment="Center"
-                Content="Antikvariat Rode orm" />
-            <ListView Name="Store3ListView" Grid.Row="1" />
-        </Grid>
-
-        <ListView Grid.Column="2" Grid.RowSpan="2" Width="300" Height="250" VerticalAlignment="Center"></ListView>
-
-        <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <ComboBox Width="140" Height="30" Margin="10"></ComboBox>
-            <Button Width="140" Height="30" Content="Add"></Button>
-        </StackPanel>
-
-        <Button Grid.Row="3" Grid.Column="1" Width="110" Height="25" Content="Remove"></Button>
+            Width="110"
+            Height="30"
+            Content="Remove"
+            Click="RemoveBookBtn_OnClick"
+            />
 
 
     </Grid>
