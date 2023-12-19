@@ -34,7 +34,7 @@
             <Label
                 Grid.Row="0"
                 HorizontalAlignment="Center"
-                Content="Akademi Bokhandeln" />
+                Content="Stores" />
             <ListView Name="Store1ListView" Grid.Row="1">
                 <ListView.View>
                     <GridView>

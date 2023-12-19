@@ -22,4 +22,6 @@ public partial class Book
     public virtual ICollection<Author> Authors { get; set; } = new List<Author>();
 
     public virtual ICollection<Publisher> Publishers { get; set; } = new List<Publisher>();
+
+
 }

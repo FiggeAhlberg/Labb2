@@ -34,7 +34,8 @@
             <ListView
                 Name="EditBooksListView"
                 Grid.Row="1"
-                Grid.Column="1">
+                Grid.Column="1"
+                SelectionChanged="EditBooksListView_OnSelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Isbn13}" Header="ISBN" />
@@ -164,13 +165,15 @@
             <ComboBox
                 Name="PublisherCmb"
                 Grid.Row="5"
-                Grid.Column="1" 
-                DisplayMemberPath="Name"/>
+                Grid.Column="1"
+                DisplayMemberPath="Name" />
             <ListView
                 Name="AuthorListView"
                 Grid.Row="6"
                 Grid.RowSpan="2"
-                Grid.Column="1">
+                Grid.Column="1"
+                SelectionChanged="AuthorListView_OnSelectionChanged"
+                >
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Header="FirstName" />
@@ -201,16 +204,18 @@
             Height="20"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
+            Click="UpdateBookBtn_OnClick"
             Content="Update"
-            FontSize="9" 
-            Click="UpdateBookBtn_OnClick"/>
+            FontSize="9" />
         <Button
+            Name="RemoveBookStockBtn"
             Grid.Row="3"
             Grid.Column="3"
             Width="100"
             Height="20"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
+            Click="RemoveBookStockBtn_OnClick"
             Content="Remove"
             FontSize="9" />
 
@@ -230,10 +235,28 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <TextBox
-                Name="AuthorIdTbx"
-                Grid.Row="2"
-                Grid.Column="1" />
+            <Button
+                Name="AuthorToBookBtn"
+                Grid.Row="3"
+                Grid.Column="0"
+                Width="80"
+                Height="20"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="AuthorToBookBtn_OnClick"
+                Content="Author to Book"
+                FontSize="10" />
+            <Button
+                Name="DeleteAuthorBook"
+                Grid.Row="4"
+                Width="80"
+                Height="20"
+                HorizontalAlignment="Left"
+                Content="Delete Author Book"
+                FontSize="8" 
+                Click="DeleteAuthorBook_OnClick"
+                />
+
             <TextBox
                 Name="AuthorFirstNameTbx"
                 Grid.Row="3"
@@ -249,17 +272,7 @@
 
         </Grid>
 
-        <Button
-            Name="AuthorToBookBtn"
-            Grid.Row="3"
-            Grid.Column="3"
-            Width="80"
-            Height="20"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Click="AuthorToBookBtn_OnClick"
-            Content="Author to Book"
-            FontSize="10" />
+
         <Button
             Name="AddAuthorBtn"
             Grid.Row="3"
@@ -272,7 +285,7 @@
             Add
         </Button>
         <Button
-            Name ="UpdateAuthorBtn"
+            Name="UpdateAuthorBtn"
             Grid.Row="3"
             Grid.Column="3"
             Width="100"
@@ -283,12 +296,14 @@
             Update
         </Button>
         <Button
+            Name="RemoveAuthorStockBtn"
             Grid.Row="3"
             Grid.Column="3"
             Width="100"
             Height="20"
             HorizontalAlignment="Right"
-            VerticalAlignment="Bottom">
+            VerticalAlignment="Bottom"
+            Click="RemoveAuthorStockBtn_OnClick">
             Remove
         </Button>
 

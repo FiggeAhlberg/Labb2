@@ -67,35 +67,11 @@ namespace Labb2.Views
 
         }
 
-
         private void StoreCmb_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectedStore = StoreCmb.SelectedItem as Store;
             LoadBooksByStore();
 
-            //if (SelectedStore != null)
-            //{
-            //    Console.WriteLine($"SelectedStore: {SelectedStore.StoreName}");
-            //    LoadBooksByStore();
-            //}
-            //else
-            //{
-            //    // Log or debug the issue
-            //    Console.WriteLine("SelectedStore is null");
-            //}
-
-            //Store1ListView.Items.Clear();
-
-            //if (StoreCmb.SelectedItem is Store selectedStore)
-            //{
-            //    SelectedStore = selectedStore;
-            //    LoadBooksByStore();
-            //}
-            //else
-            //{
-            //    SelectedStore = null;
-            //    Store1ListView.Items.Clear(); 
-            //}
         }
 
         private void BookListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -113,6 +89,10 @@ namespace Labb2.Views
                 db.Stocks.Remove(SelectedBookStore);
                 db.SaveChanges();
                 LoadBooksByStore();
+            }
+            else
+            {
+                MessageBox.Show("No bookstore selected");
             }
         }
 
@@ -150,6 +130,10 @@ namespace Labb2.Views
                     db.SaveChanges();
                     LoadBooksByStore();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Wrong format, Needs to be number");
             }
         }
     }
